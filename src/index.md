@@ -12,7 +12,7 @@ pager: false
 ```js
 // import { play } from "./player.js";
 const tsShow = await FileAttachment("/data/tsshow.json").json();
-const tsBetween = await FileAttachment("/data/tsshow.json").json();
+const tsBetween = await FileAttachment("/data/tsbetween.json").json();
 function sleep(millis) {
   if (millis < 0) millis = 0;
   return new Promise(resolve => setTimeout(resolve, millis));
@@ -34,9 +34,9 @@ const play = async (displayDiv, tsShow, tsBetween) => {
     wordDiv.classList.add("spel","time");
     wordDiv.innerText = thisLast[thisLastIndex];
     wordDiv.style.opacity = 0;
-    console.log(thisLast[thisLastIndex]); // DEBUG
+    // console.log(thisLast[thisLastIndex]); // DEBUG
     displayDiv.appendChild(wordDiv);
-    console.log(wordDiv); // DEBUG
+    // console.log(wordDiv); // DEBUG
     await sleep(100); // time for the page to register the new element
     wordDiv.style.opacity = 1;
     await sleep(1600 + 2 * tsShow[thisLastIndex]);
