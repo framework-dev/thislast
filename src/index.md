@@ -11,8 +11,8 @@ pager: false
 
 ```js
 // import { play } from "./player.js";
-const tsShow = await FileAttachment("/data/tsshow.json").json();
-const tsBetween = await FileAttachment("/data/tsbetween.json").json();
+const tsShow = [270,179,280,810,560,169,649,750];
+const tsBetween = [0,40,0,149,760,0,459,0];
 function sleep(millis) {
   if (millis < 0) millis = 0;
   return new Promise(resolve => setTimeout(resolve, millis));
