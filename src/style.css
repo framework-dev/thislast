@@ -1,5 +1,6 @@
-.body {
-  margin: none;
+body {
+  background-color: #003050;
+  margin: 0;
 }
 
 .field {
@@ -13,12 +14,12 @@
   height: 50vw;
   font-size: 43vw;
   line-height: 1;
-  font-family: "Nunito Sans";
+  font-family: "Nunito Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 900;
   font-style: normal;
   font-variation-settings:
-    "wdth" 200,
+    "wdth" 100,
     "YTLC" 500;
 }
 
@@ -27,10 +28,75 @@
   margin: auto;
   left: 0;
   right: 0;
-  transition: opacity 1500ms, transform 1500ms;
+  transition: transform 2000ms, font-variation-settings 2000ms, letter-spacing 2000ms;
+  /* opacity 1500ms, */
+}
+
+.this {
+  letter-spacing: -1.6vw;
+}
+
+.is {
+  letter-spacing: 3vw;
+}
+
+.my {
+  letter-spacing: 3vw;
+}
+
+.last {
+  font-variation-settings:
+    "wdth" 84;
+  letter-spacing: -1vw;
 }
 
 .time {
+  font-variation-settings:
+    "wdth" 95;
+  letter-spacing: -1vw;
+}
+
+.to {
+  letter-spacing: 3vw;
+}
+
+.see {
+  letter-spacing: 3vw;
+}
+
+.hear {
+  /* left: -3vw; */
+  font-variation-settings:
+    "wdth" 75;
+  letter-spacing: -1.5vw;
+}
+
+.feel {
+  font-variation-settings:
+    "wdth" 98;
+  letter-spacing: -1vw;
+}
+
+.taste {
+  font-variation-settings:
+    "wdth" 75;
+  letter-spacing: -4.2vw;
+}
+
+.touch {
+  font-variation-settings:
+    "wdth" 75;
+  letter-spacing: -8vw;
+}
+
+.know {
+  /* left: -7vw; */
+  font-variation-settings:
+    "wdth" 75;
+  letter-spacing: -7vw;
+}
+
+.verb {
   letter-spacing: -1vw;
 }
 
@@ -59,7 +125,7 @@
 }
 
 .four:hover {
-  transform:rotate3d(0,1,0,90deg);
+  transform: rotate3d(0, 1, 0, 90deg);
 }
 
 .nunito-sans-normal {
