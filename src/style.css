@@ -31,7 +31,6 @@ body {
   right: 0;
   transition:
     transform 3000ms, font-weight 3000ms, font-variation-settings 3000ms, letter-spacing 3000ms;
-  /* opacity 1500ms, */
 }
 
 .this {
