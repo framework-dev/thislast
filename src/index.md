@@ -52,7 +52,7 @@ const play = async (displayDiv, tsShow, tsBetween) => {
       wordDiv = document.getElementById("s" + verbIndex);
     }
     wordDiv.style.transform = "rotate3d(0,1,0,0deg)";
-    lastWordDiv.style.transform = "rotate3d(0,1,0,90deg)";
+    lastWordDiv.style.transform = `rotate3d(0,1,0,${randomIndex(2) == 1 ? "270" : "90"}deg)`;
     await sleep(transitionMs + tsFactor * tsShow[thisLastIndex]);
     await sleep(transitionMs + tsFactor * tsBetween[thisLastIndex]);
     thisLastIndex = ++thisLastIndex % thisLength;
