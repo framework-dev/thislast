@@ -18,18 +18,20 @@ pager: false
   <div id=s7 class="spel hear" style="transform:rotate3d(0,1,0,90deg)">HEAR</div>
   <div id=s8 class="spel know" style="transform:rotate3d(0,1,0,90deg)">KNOW</div>
   <div id=s9 class="spel read" style="transform:rotate3d(0,1,0,90deg)">READ</div>
-  <div id=s10 class="spel see" style="transform:rotate3d(0,1,0,90deg)">SEE</div>
-  <div id=s11 class="spel taste" style="transform:rotate3d(0,1,0,90deg)">TASTE</div>
-  <div id=s12 class="spel touch" style="transform:rotate3d(0,1,0,90deg)">TOUCH</div>
+  <div id=s10 class="spel say" style="transform:rotate3d(0,1,0,90deg)">SAY</div>
+  <div id=s11 class="spel see" style="transform:rotate3d(0,1,0,90deg)">SEE</div>
+  <div id=s12 class="spel taste" style="transform:rotate3d(0,1,0,90deg)">TASTE</div>
+  <div id=s13 class="spel touch" style="transform:rotate3d(0,1,0,90deg)">TOUCH</div>
 </div>
 
 ```js
 // import { play } from "./player.js";
 const tsShow = [700,179,280,700,560,169,649,750];
 const tsBetween = [0,40,0,149,300,0,450,0];
-const thisLength = 7;
+const thisLength = 7, verbLength = 8;
 const transitionMs = 3050;
 const tsFactor = 1.2;
+const randomIndex = (maxLen) => Math.floor(Math.random() * maxLen);
 function sleep(millis) {
   if (millis < 0) millis = 0;
   return new Promise(resolve => setTimeout(resolve, millis));
@@ -37,7 +39,6 @@ function sleep(millis) {
 console.log("v3");
 const play = async (displayDiv, tsShow, tsBetween) => {
   console.log("in play");
-  const randomIndex = (maxLen) => Math.floor(Math.random() * maxLen);
   let thisLastIndex = 0;
   let verbIndex, lastVerbIndex = 0, wordDiv, lastWordDiv = document.getElementById("s6");
   let counter = 0;
@@ -45,7 +46,7 @@ const play = async (displayDiv, tsShow, tsBetween) => {
     wordDiv = document.getElementById("s" + thisLastIndex);
     if (thisLastIndex == thisLength - 1) {
       do {
-        verbIndex = randomIndex(7) + 6;
+        verbIndex = randomIndex(verbLength) + (thisLength - 1);
       } while (verbIndex == lastVerbIndex);
       lastVerbIndex = verbIndex;
       wordDiv = document.getElementById("s" + verbIndex);

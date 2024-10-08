@@ -95,6 +95,10 @@ body {
   letter-spacing: -0.015em;
 }
 
+.say {
+  font-weight: 1000;
+}
+
 .see {
   letter-spacing: 0.05em;
   font-weight: 1000;
