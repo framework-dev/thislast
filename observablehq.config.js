@@ -20,7 +20,7 @@ export default {
   head: `<link rel="icon" href="observable.png" type="image/png" sizes="32x32">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wdth,wght@0,6..12,75..100,200..1000;1,6..12,75..100,200..1000&display=swap" rel="stylesheet">`,
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wdth,wght@6..12,75..125,200..1000&display=swap" rel="stylesheet">`,
 
   // The path to the source root.
   root: "src",

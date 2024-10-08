@@ -26,78 +26,95 @@ body {
 .spel {
   position: absolute;
   margin: auto;
+  top: 6vw;
   left: 0;
   right: 0;
-  transition: transform 2000ms, font-variation-settings 2000ms, letter-spacing 2000ms;
+  transition:
+    transform 3500ms, font-weight 3500ms, font-variation-settings 3500ms, letter-spacing 3500ms;
   /* opacity 1500ms, */
 }
 
 .this {
-  letter-spacing: -1.6vw;
+  letter-spacing: -0.05em;
 }
 
 .is {
-  letter-spacing: 3vw;
+  font-weight: 1000;
+  letter-spacing: 0.05em;
 }
 
 .my {
-  letter-spacing: 3vw;
+  font-weight: 1000;
+  letter-spacing: 0.05em;
 }
 
 .last {
+  left: -1vw;
   font-variation-settings:
-    "wdth" 84;
-  letter-spacing: -1vw;
+    "wdth" 80;
+  letter-spacing: -0.01em;
 }
 
 .time {
   font-variation-settings:
-    "wdth" 95;
-  letter-spacing: -1vw;
+    "wdth" 92;
+  letter-spacing: -0.05em;
 }
 
 .to {
-  letter-spacing: 3vw;
-}
-
-.see {
-  letter-spacing: 3vw;
-}
-
-.hear {
-  /* left: -3vw; */
-  font-variation-settings:
-    "wdth" 75;
-  letter-spacing: -1.5vw;
+  font-weight: 1000;
+  letter-spacing: 0.05em;
 }
 
 .feel {
+  left: -2vw;
   font-variation-settings:
     "wdth" 98;
-  letter-spacing: -1vw;
+  letter-spacing: -0.05em;
 }
 
-.taste {
+.hear {
+  left: -1.5vw;
+  font-weight: 800;
   font-variation-settings:
     "wdth" 75;
-  letter-spacing: -4.2vw;
-}
-
-.touch {
-  font-variation-settings:
-    "wdth" 75;
-  letter-spacing: -8vw;
+  letter-spacing: -0.03em;
 }
 
 .know {
-  /* left: -7vw; */
+  left: -6vw;
+  font-weight: 800;
   font-variation-settings:
     "wdth" 75;
-  letter-spacing: -7vw;
+  letter-spacing: -0.15em;
 }
 
-.verb {
-  letter-spacing: -1vw;
+.read {
+  left: -0.5vw;
+  font-variation-settings:
+    "wdth" 75;
+  letter-spacing: -0.015em;
+}
+
+.see {
+  letter-spacing: 0.05em;
+  font-weight: 1000;
+}
+
+.taste {
+  left: -2.5vw;
+  font-weight: 800;
+  font-variation-settings:
+    "wdth" 75;
+  letter-spacing: -0.09em;
+}
+
+.touch {
+  left: -6.5vw;
+  font-weight: 700;
+  font-variation-settings:
+    "wdth" 75;
+  letter-spacing: -0.17em;
 }
 
 .display {

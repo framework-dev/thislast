@@ -14,7 +14,13 @@ pager: false
   <div id=s3 class="spel last" style="opacity:1;transform:rotate3d(0,1,0,90deg)">LAST</div>
   <div id=s4 class="spel time" style="opacity:1;transform:rotate3d(0,1,0,90deg)">TIME</div>
   <div id=s5 class="spel to" style="opacity:1;1;transform:rotate3d(0,1,0,90deg)">TO</div>
-  <div id=s6 class="spel hear" style="opacity:1;transform:rotate3d(0,1,0,90deg)">HEAR</div>
+  <div id=s6 class="spel feel" style="opacity:1;transform:rotate3d(0,1,0,90deg)">FEEL</div>
+  <div id=s7 class="spel hear" style="opacity:1;transform:rotate3d(0,1,0,90deg)">HEAR</div>
+  <div id=s8 class="spel know" style="opacity:1;transform:rotate3d(0,1,0,90deg)">KNOW</div>
+  <div id=s9 class="spel read" style="opacity:1;transform:rotate3d(0,1,0,90deg)">READ</div>
+  <div id=s10 class="spel see" style="opacity:1;transform:rotate3d(0,1,0,90deg)">SEE</div>
+  <div id=s11 class="spel taste" style="opacity:1;transform:rotate3d(0,1,0,90deg)">TASTE</div>
+  <div id=s12 class="spel touch" style="opacity:1;transform:rotate3d(0,1,0,90deg)">TOUCH</div>
 </div>
 
 ```js
@@ -22,7 +28,7 @@ pager: false
 const tsShow = [270,179,280,810,560,169,649,750];
 const tsBetween = [0,40,0,149,760,0,459,0];
 const thisLength = 7;
-const transitionMs = 2000;
+const transitionMs = 4100;
 const tsFactor = 1;
 function sleep(millis) {
   if (millis < 0) millis = 0;
@@ -31,27 +37,28 @@ function sleep(millis) {
 console.log("v3");
 const play = async (displayDiv, tsShow, tsBetween) => {
   console.log("in play");
-  const verbs = ["SEE", "HEAR", "FEEL", "TOUCH", "TASTE", "KNOW"];
+  const verbs = ["FEEL", "HEAR", "KNOW", "READ", "SEE", "TASTE", "TOUCH"];
   const randomIndex = () => Math.floor(Math.random() * verbs.length);
   // let thisLast = ["THIS", "IS", "MY", "LAST", "TIME", "TO", ""];
   let thisLastIndex = 0;
-  let word, wordDiv, wordClass, lastWordDiv = document.getElementById("s6");
+  let verbIndex, lastVerbIndex = 0, wordDiv, wordClass, lastWordDiv = document.getElementById("s6");
   let counter = 0;
   while (counter < 100) {
     // await Promises.delay(3000);
     wordDiv = document.getElementById("s" + thisLastIndex);
-    word = wordDiv.innerText;
     if (thisLastIndex == thisLength - 1) {
-      word = verbs[randomIndex()];
-      wordDiv.innerText = word;
-      wordDiv.classList.add(word.toLowerCase());
+      do {
+        verbIndex = randomIndex() + 6;
+      } while (verbIndex == lastVerbIndex);
+      lastVerbIndex = verbIndex;
+      wordDiv = document.getElementById("s" + verbIndex);
+      // wordDiv.classList.add(word.toLowerCase());
     }
     // wordDiv.classList.add("spel","time");
     // wordDiv.innerText = thisLast[thisLastIndex];
     // wordDiv.style.opacity = 0;
     // console.log(thisLast[thisLastIndex]); // DEBUG
     // displayDiv.appendChild(wordDiv);
-    console.log(word); // DEBUG
     await sleep(100); // time for the page to register the new element
     // wordDiv.style.opacity = 1;
     wordDiv.style.transform = "rotate3d(0,1,0,0deg)";
@@ -60,9 +67,9 @@ const play = async (displayDiv, tsShow, tsBetween) => {
     // wordDiv.style.opacity = 0;
     await sleep(transitionMs + tsFactor * tsBetween[thisLastIndex]);
     // displayDiv.removeChild(wordDiv);
-    if (thisLastIndex == thisLength - 1) {
-      wordDiv.classList.remove(word.toLowerCase());
-    }
+    // if (thisLastIndex == thisLength - 1) {
+    //   wordDiv.classList.remove(word.toLowerCase());
+    // }
     thisLastIndex = ++thisLastIndex % thisLength;
     // await sleep(1600);
     // wordDiv.style.opacity = 0;
