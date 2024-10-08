@@ -25,11 +25,11 @@ pager: false
 
 ```js
 // import { play } from "./player.js";
-const tsShow = [270,179,280,810,560,169,649,750];
-const tsBetween = [0,40,0,149,760,0,459,0];
+const tsShow = [700,179,280,700,560,169,649,750];
+const tsBetween = [0,40,0,149,300,0,450,0];
 const thisLength = 7;
-const transitionMs = 4100;
-const tsFactor = 1;
+const transitionMs = 3050;
+const tsFactor = 1.2;
 function sleep(millis) {
   if (millis < 0) millis = 0;
   return new Promise(resolve => setTimeout(resolve, millis));
@@ -37,43 +37,26 @@ function sleep(millis) {
 console.log("v3");
 const play = async (displayDiv, tsShow, tsBetween) => {
   console.log("in play");
-  const verbs = ["FEEL", "HEAR", "KNOW", "READ", "SEE", "TASTE", "TOUCH"];
-  const randomIndex = () => Math.floor(Math.random() * verbs.length);
-  // let thisLast = ["THIS", "IS", "MY", "LAST", "TIME", "TO", ""];
+  const randomIndex = (maxLen) => Math.floor(Math.random() * maxLen);
   let thisLastIndex = 0;
-  let verbIndex, lastVerbIndex = 0, wordDiv, wordClass, lastWordDiv = document.getElementById("s6");
+  let verbIndex, lastVerbIndex = 0, wordDiv, lastWordDiv = document.getElementById("s6");
   let counter = 0;
-  while (counter < 100) {
-    // await Promises.delay(3000);
+  while (counter < Number.MAX_SAFE_INTEGER) {
     wordDiv = document.getElementById("s" + thisLastIndex);
     if (thisLastIndex == thisLength - 1) {
       do {
-        verbIndex = randomIndex() + 6;
+        verbIndex = randomIndex(7) + 6;
       } while (verbIndex == lastVerbIndex);
       lastVerbIndex = verbIndex;
       wordDiv = document.getElementById("s" + verbIndex);
-      // wordDiv.classList.add(word.toLowerCase());
     }
-    // wordDiv.classList.add("spel","time");
-    // wordDiv.innerText = thisLast[thisLastIndex];
-    // wordDiv.style.opacity = 0;
-    // console.log(thisLast[thisLastIndex]); // DEBUG
-    // displayDiv.appendChild(wordDiv);
-    await sleep(100); // time for the page to register the new element
-    // wordDiv.style.opacity = 1;
     wordDiv.style.transform = "rotate3d(0,1,0,0deg)";
     lastWordDiv.style.transform = "rotate3d(0,1,0,90deg)";
     await sleep(transitionMs + tsFactor * tsShow[thisLastIndex]);
-    // wordDiv.style.opacity = 0;
     await sleep(transitionMs + tsFactor * tsBetween[thisLastIndex]);
-    // displayDiv.removeChild(wordDiv);
-    // if (thisLastIndex == thisLength - 1) {
-    //   wordDiv.classList.remove(word.toLowerCase());
-    // }
     thisLastIndex = ++thisLastIndex % thisLength;
-    // await sleep(1600);
-    // wordDiv.style.opacity = 0;
     lastWordDiv = wordDiv;
+    ++counter;
   }
 }
 play(document.getElementById("v3"), tsShow, tsBetween);

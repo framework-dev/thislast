@@ -30,7 +30,7 @@ body {
   left: 0;
   right: 0;
   transition:
-    transform 3500ms, font-weight 3500ms, font-variation-settings 3500ms, letter-spacing 3500ms;
+    transform 3000ms, font-weight 3000ms, font-variation-settings 3000ms, letter-spacing 3000ms;
   /* opacity 1500ms, */
 }
 
