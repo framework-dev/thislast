@@ -29,8 +29,9 @@ body {
   top: 6vw;
   left: 0;
   right: 0;
+  opacity: 1;
   transition:
-    transform 3000ms, font-weight 3000ms, font-variation-settings 3000ms, letter-spacing 3000ms;
+    transform 3000ms, font-weight 3000ms, font-variation-settings 3000ms, letter-spacing 3000ms, opacity 3000ms ease-in-out;
 }
 
 .this {

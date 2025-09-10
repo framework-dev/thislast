@@ -20,10 +20,12 @@ play = async (displayDiv, tsShow, tsBetween) => {
     console.log(wordDiv); // DEBUG
     await Promises.delay(100); // time for the page to register the new element
     wordDiv.style.opacity = 1;
-    await Promises.delay(1600 + 2 * tsShow[thisLastIndex]);
+    await Promises.delay(1600 * 0 + 2 * tsShow[thisLastIndex]); // * 0 to disable any delay
     // wordDiv.style.opacity = 0;
     wordDiv.style.transform = "rotate3d(0,1,0,90deg)";
-    await Promises.delay(1600 + 2 * tsBetween[thisLastIndex]);
+    let theDelay = 1600 + 2 * tsBetween[thisLastIndex];
+    wordDiv.style.transitionDuration = `transform ${theDelay}ms`;
+    await Promises.delay(theDelay);
     displayDiv.removeChild(wordDiv);
     thisLastIndex = ++thisLastIndex % thisLast.length;
   }

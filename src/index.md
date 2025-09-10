@@ -25,12 +25,11 @@ pager: false
 </div>
 
 ```js
-// import { play } from "./player.js";
-const tsShow = [700,179,280,700,560,169,649,750];
-const tsBetween = [0,40,0,149,300,0,450,0];
+const tsShow = [50,50,50,50,50,50,50,50]; // was [700,179,280,700,560,169,649,750];
+const tsBetween = [700,179,280,700,560,169,649,750]; // was [0,40,0,149,300,0,450,0];
 const thisLength = 7, verbLength = 8;
-const transitionMs = 3050;
-const tsFactor = 1.2;
+const transitionMs = 3050; // +50ms relative to the setting of 3000 for the transitions in style.css
+const tsFactor = 4;
 const randomIndex = (maxLen) => Math.floor(Math.random() * maxLen);
 function sleep(millis) {
   if (millis < 0) millis = 0;
@@ -40,7 +39,7 @@ console.log("v3");
 const play = async (displayDiv, tsShow, tsBetween) => {
   console.log("in play");
   let thisLastIndex = 0;
-  let verbIndex, lastVerbIndex = 0, wordDiv, lastWordDiv = document.getElementById("s6");
+  let verbIndex, lastVerbIndex = 0, wordDiv, lastWordDiv = document.getElementById("s6"),theDelay, lastDelay = tsFactor * tsBetween[6];
   let counter = 0;
   while (counter < Number.MAX_SAFE_INTEGER) {
     wordDiv = document.getElementById("s" + thisLastIndex);
@@ -51,11 +50,24 @@ const play = async (displayDiv, tsShow, tsBetween) => {
       lastVerbIndex = verbIndex;
       wordDiv = document.getElementById("s" + verbIndex);
     }
+    // before transform
+    await sleep(tsFactor * tsShow[thisLastIndex]); // had added: transitionMs + 
+    // set duration of the transform
+    theDelay = tsFactor * tsBetween[thisLastIndex];
+    wordDiv.style.transitionDuration = `transform ${theDelay}ms`;
+    // evoke transform
     wordDiv.style.transform = "rotate3d(0,1,0,0deg)";
-    lastWordDiv.style.transform = `rotate3d(0,1,0,${randomIndex(2) == 1 ? "270" : "90"}deg)`;
-    await sleep(transitionMs + tsFactor * tsShow[thisLastIndex]);
-    await sleep(transitionMs + tsFactor * tsBetween[thisLastIndex]);
+    // wordDiv.style.opacity = '1';
+    // last word transforms at the same time
+    // OPTION lastWordDiv.style.transform = `rotate3d(0,1,0,${randomIndex(2) == 1 ? "270" : "90"}deg)`;
+    lastWordDiv.style.transform = `rotate3d(0,1,0,90deg)`;
+    // wordDiv.style.opacity = '0';
+    // await completions of the transform
+    await sleep(100 + Math.max(lastDelay, theDelay));
+    // await sleep(50 + theDelay); // had added: transitionMs + 
+    // transform done; reset variables
     thisLastIndex = ++thisLastIndex % thisLength;
+    lastDelay = theDelay;
     lastWordDiv = wordDiv;
     ++counter;
   }
