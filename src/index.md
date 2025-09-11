@@ -8,20 +8,20 @@ sidebar: false
 pager: false
 ---
 <div id="v3" class="field">
-  <div id=s0 class="spel this" style="transform:rotate3d(0,1,0,90deg)">THIS</div>
-  <div id=s1 class="spel is" style="transform:rotate3d(0,1,0,90deg)">IS</div>
-  <div id=s2 class="spel my" style="transform:rotate3d(0,1,0,90deg)">MY</div>
-  <div id=s3 class="spel last" style="transform:rotate3d(0,1,0,90deg)">LAST</div>
-  <div id=s4 class="spel time" style="transform:rotate3d(0,1,0,90deg)">TIME</div>
-  <div id=s5 class="spel to" style="1;transform:rotate3d(0,1,0,90deg)">TO</div>
-  <div id=s6 class="spel feel" style="transform:rotate3d(0,1,0,90deg)">FEEL</div>
-  <div id=s7 class="spel hear" style="transform:rotate3d(0,1,0,90deg)">HEAR</div>
-  <div id=s8 class="spel know" style="transform:rotate3d(0,1,0,90deg)">KNOW</div>
-  <div id=s9 class="spel read" style="transform:rotate3d(0,1,0,90deg)">READ</div>
-  <div id=s10 class="spel say" style="transform:rotate3d(0,1,0,90deg)">SAY</div>
-  <div id=s11 class="spel see" style="transform:rotate3d(0,1,0,90deg)">SEE</div>
-  <div id=s12 class="spel taste" style="transform:rotate3d(0,1,0,90deg)">TASTE</div>
-  <div id=s13 class="spel touch" style="transform:rotate3d(0,1,0,90deg)">TOUCH</div>
+  <div id=s0 class="spel this">THIS</div>
+  <div id=s1 class="spel is">IS</div>
+  <div id=s2 class="spel my">MY</div>
+  <div id=s3 class="spel last">LAST</div>
+  <div id=s4 class="spel time">TIME</div>
+  <div id=s5 class="spel to">TO</div>
+  <div id=s6 class="spel feel">FEEL</div>
+  <div id=s7 class="spel hear">HEAR</div>
+  <div id=s8 class="spel know">KNOW</div>
+  <div id=s9 class="spel read">READ</div>
+  <div id=s10 class="spel say">SAY</div>
+  <div id=s11 class="spel see">SEE</div>
+  <div id=s12 class="spel taste">TASTE</div>
+  <div id=s13 class="spel touch">TOUCH</div>
 </div>
 
 ```js
@@ -56,14 +56,16 @@ const play = async (displayDiv, tsShow, tsBetween) => {
     theDelay = tsFactor * tsBetween[thisLastIndex];
     wordDiv.style.transitionDuration = `transform ${theDelay}ms`;
     // evoke transform
+    // wordDiv.style.opacity = 1;
+    wordDiv.style.color = 'var(--color)';
     wordDiv.style.transform = "rotate3d(0,1,0,0deg)";
-    // wordDiv.style.opacity = '1';
     // last word transforms at the same time
     // OPTION lastWordDiv.style.transform = `rotate3d(0,1,0,${randomIndex(2) == 1 ? "270" : "90"}deg)`;
     lastWordDiv.style.transform = `rotate3d(0,1,0,90deg)`;
-    // wordDiv.style.opacity = '0';
     // await completions of the transform
     await sleep(100 + Math.max(lastDelay, theDelay));
+    wordDiv.style.color = 'var(--color)';
+    // wordDiv.style.opacity = 0;
     // await sleep(50 + theDelay); // had added: transitionMs + 
     // transform done; reset variables
     thisLastIndex = ++thisLastIndex % thisLength;

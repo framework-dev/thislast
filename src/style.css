@@ -1,12 +1,49 @@
+:root {
+  --body-background: black;
+  /* --background-color: #003050; */
+  --background-color: #001f3f;
+  --color: floralwhite;
+  /* --color: #FF4136; */
+  --active-color: #FF4136;
+}
+
+
 body {
-  background-color: #003050;
+  position: relative;
+  background-color: var(--body-background);
   margin: 0;
 }
 
-.field {
+#v3 {
   position: relative;
-  background-color: #003050;
-  color: floralwhite;
+  box-sizing: border-box;
+  cursor: none;
+}
+
+#v3::before, #v3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 9.7vw;
+  background: var(--body-background);
+  z-index: 10;
+  pointer-events: none;
+}
+#v3::before {
+  top: 0;
+}
+#v3::after {
+  bottom: 0;
+}
+
+.field {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: var(--background-color);
+  color: var(--color);
   width: 100vw;
   padding: none;
   margin: none;
@@ -25,13 +62,18 @@ body {
 
 .spel {
   position: absolute;
+  cursor: none;
   margin: auto;
-  top: 6vw;
+  top: 4.7vw;
   left: 0;
   right: 0;
-  opacity: 1;
   transition:
-    transform 3000ms, font-weight 3000ms, font-variation-settings 3000ms, letter-spacing 3000ms, opacity 3000ms ease-in-out;
+    transform 3000ms, opacity 3000ms, color 3000ms;
+    /* font-weight 3000ms, font-variation-settings 3000ms, letter-spacing 3000ms,  */
+  transform: rotate3d(0,1,0,90deg);
+  opacity: 1;
+  color: var(--color);
+  z-index: 1;
 }
 
 .this {
