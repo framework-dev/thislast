@@ -90,6 +90,11 @@ body {
   letter-spacing: 0.05em;
 }
 
+.our {
+  font-weight: 1000;
+  letter-spacing: 0.05em;
+}
+
 .last {
   left: -1vw;
   font-variation-settings:
