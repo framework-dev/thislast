@@ -1,7 +1,6 @@
 ---
 title: THIS LAST
 toc: false
-style: style.css
 header: false
 footer: false
 sidebar: false
