@@ -36,20 +36,40 @@ function sleep(millis) {
   if (millis < 0) millis = 0;
   return new Promise(resolve => setTimeout(resolve, millis));
 }
+function shuffle (b) {
+  let a = b.slice(); // make a copy
+  let i = a.length;
+  if (i < 2) return a;
+  while (--i > 0) {
+    let j = ~~(Math.random() * (i + 1)); // ~~ is a common optimization for Math.floor
+    let t = a[j];
+    a[j] = a[i];
+    a[i] = t;
+  }
+  return a;
+}
 console.log("v3");
 const play = async (displayDiv, tsShow, tsBetween) => {
   console.log("in play");
   let thisLastIndex = 0;
-  let verbIndex, lastVerbIndex = 0, wordDiv, lastWordDiv = document.getElementById("s6"),theDelay, lastDelay = tsFactor * tsBetween[6];
+  let lastVerbIndex = 0, wordDiv, lastWordDiv = document.getElementById("s6"),theDelay, lastDelay = tsFactor * tsBetween[6];
   let counter = 0;
+  let verbIndex = 0, verbIndexArray = shuffle([6,7,8,9,10,11,12,13]);
   while (counter < Number.MAX_SAFE_INTEGER) {
     wordDiv = document.getElementById("s" + thisLastIndex);
     if (thisLastIndex == thisLength - 1) {
-      do {
-        verbIndex = randomIndex(verbLength) + (thisLength - 1);
-      } while (verbIndex == lastVerbIndex);
-      lastVerbIndex = verbIndex;
-      wordDiv = document.getElementById("s" + verbIndex);
+      // do {
+      //   verbIndex = randomIndex(verbLength) + (thisLength - 1);
+      // } while (verbIndex == lastVerbIndex);
+      // lastVerbIndex = verbIndex;
+      wordDiv = document.getElementById("s" + verbIndexArray[verbIndex]);
+      verbIndex = (verbIndex + 1) % verbLength;
+      if (verbIndex === 0) {
+        do {
+          verbIndexArray = shuffle(verbIndexArray);
+        } while (verbIndexArray[0] === lastVerbIndex);
+        lastVerbIndex = verbIndexArray[verbLength - 1];
+      }
     }
     if (thisLastIndex == 2) {
       // one in three times 'our'
@@ -76,6 +96,7 @@ const play = async (displayDiv, tsShow, tsBetween) => {
     thisLastIndex = ++thisLastIndex % thisLength;
     lastDelay = theDelay;
     lastWordDiv = wordDiv;
+console.log(`thisLastIndex: ${thisLastIndex}; verbIndex: ${verbIndex} ${wordDiv.innerText} ${verbIndexArray}`)
     ++counter;
   }
 }
