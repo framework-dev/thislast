@@ -25,6 +25,8 @@ pager: false
 </div>
 
 ```js
+const PRODUCTION = true;
+//
 const tsShow = [50,50,50,50,50,50,50,50]; // was [700,179,280,700,560,169,649,750];
 const tsBetween = [700,179,280,700,560,169,649,750]; // was [0,40,0,149,300,0,450,0];
 const thisLength = 7, verbLength = 8;
@@ -48,9 +50,9 @@ function shuffle (b) {
   }
   return a;
 }
-console.log("v3");
+console.log("This Last, 3.0, Spring 2026");
 const play = async (displayDiv, tsShow, tsBetween) => {
-  console.log("in play");
+  if (!PRODUCTION) console.log("in play");
   let thisLastIndex = 0;
   let lastVerbIndex = 0, wordDiv, lastWordDiv = document.getElementById("s6"),theDelay, lastDelay = tsFactor * tsBetween[6];
   let counter = 0;
@@ -96,7 +98,7 @@ const play = async (displayDiv, tsShow, tsBetween) => {
     thisLastIndex = ++thisLastIndex % thisLength;
     lastDelay = theDelay;
     lastWordDiv = wordDiv;
-console.log(`thisLastIndex: ${thisLastIndex}; verbIndex: ${verbIndex} ${wordDiv.innerText} ${verbIndexArray}`)
+if (!PRODUCTION) console.log(`thisLastIndex: ${thisLastIndex}; verbIndex: ${verbIndex} ${wordDiv.innerText} ${verbIndexArray}`)
     ++counter;
   }
 }
